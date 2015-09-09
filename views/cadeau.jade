@@ -1,0 +1,34 @@
+extends layoutConnected
+	
+block subContent
+
+	div.container(ng-controller="cadeauCtrl")
+		div.row
+			div.col-md-12
+				h1= subtitle
+				form#formAddUser(name="addCadeau",method="post",action="/addCadeau", ng-submit="submitTheForm()")
+					input(type="text", placeholder="Titre", name="titre", ng-model="titre")
+					input(type="text", placeholder="Prenom", name="prenom", ng-model="prenom")
+					input(type="text", placeholder="Lien", name="lien", ng-model="lien")
+		div.row
+			div.col-md-12
+					button.btn.btn-success(ng-click="submitTheForm()") Enregistrer
+		
+			
+		//div(ng-show="{{cadeau.image}}", class="ng-hide")
+		//	form#formAddUser(name="recharger",method="post",action="/cadeau/recharger")
+		//		input#inputUserName(type="hidden", placeholder="id", name="id", value="{{cadeau._id}}")
+		//		input#inputUserName(type="hidden", placeholder="lien", name="lien", value="{{cadeau.lien}}")
+		//		span: img(src='/webshot/{{cadeau.image}}.png', class="webshot-grand")
+		//		div: button#btnSubmit(type="submit") Recharger
+		//div(ng-show="{{cadeau.image != null}}")
+		//		span: img(src='/webshot/{{cadeau.image}}.png', class="webshot-grand")
+		
+		div
+			span(class="label label-{{label}}") {{cadeau.statut}}
+		
+		//div
+		//	div: a(href='/cadeau/{{cadeau._id}}/reserver') Réserver
+		//	div: a(href='/cadeau/{{cadeau._id}}/annuler') Annuler
+		//	div: a(href='/cadeau/{{cadeau._id}}/acheter') Acheter
+		

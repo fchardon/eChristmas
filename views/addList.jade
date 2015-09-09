@@ -1,0 +1,81 @@
+extends layoutConnected
+	
+block subContent
+
+	div.container(ng-controller="listCtrl")
+		div.row
+			div.col-md-2.listPersonnes
+				div(ng-controller="personneCtrl", ng-init="init(personnes= #{JSON.stringify(personnes)})")
+					div.row
+						div.col-md-2
+							h3 Personnes
+					div.row
+						div.col-md-2
+							div
+								ul.listeCadeaux
+									li.personne(ng-repeat="personne in personnes")
+										div.viewInput(ng-show='personne.done',ng-click="afficherCadeau(personne.prenom)")
+											{{personne.prenom}}
+										div(ng-hide='personne.done')
+											div.form-group.personne
+												form(name="personneForm",ng-submit="submitPersonne()")
+													input.form-control(type="text", placeholder="Prénom", name="prenom", ng-model="personne.prenom")
+												button.btn.btn-xs.btn-primary(ng-click="validerPersonne(personne, userName)") Valider
+												button.btn.btn-xs.btn-default(ng-click="annulerPersonne(personne)") annuler
+									
+							div
+								button.btn.btn-sm.btn-primary(ng-click="addPersonne()") Ajouter Personne
+					
+			div.col-md-10
+				//div(ng-init="init(cadeaux= #{JSON.stringify(cadeaux)})")
+				div(ng-hide="displayCadeaux")		
+					div.col-md-10
+							//div.viewInput(ng-click="editPrenom()")
+							div
+								h3 Liste des cadeaux
+							div
+								span.label.label-success Clique sur un prénom pour voir la liste des cadeaux
+				div(ng-show="displayCadeaux")		
+					div.row
+						//div.col-md-2(ng-hide="afficherPrenom")
+						//	div.form-group
+						//		input.form-control(type="text", placeholder="Prénom", name="titre", ng-model="prenom")
+						//div.col-md-2(ng-hide="afficherPrenom")
+						//		button.btn.btn-sm.btn-primary(ng-show="prenom", ng-click='initPrenom()') Valider
+						div.col-md-10(ng-show="afficherPrenom")
+							//div.viewInput(ng-click="editPrenom()")
+							div
+								h3 Liste des cadeaux pour {{prenomTermine}}
+					
+					
+					ul.listeCadeaux(ng-show="prenomTermine")
+						li(ng-repeat="cadeau in cadeaux")
+							div.row
+								div.col-md-4(ng-show="cadeau.done")
+									div.viewInput.inputcadeau(ng-click="editCadeau(cadeau)")
+										span(class="done-{{cadeau.done}}")  {{cadeau.titre}}
+										
+								div.col-md-4(ng-show="cadeau.done")
+									div.iconeCheck
+										a(href="{{cadeau.lien}}", target="_blank"): span.glyphicon.glyphicon-link
+										//span.glyphicon.glyphicon-ok-circle
+									
+								div.col-md-4(ng-hide="cadeau.done")
+									div.form-group
+										form(name="cadeauForm",ng-submit="submitCadeau()")
+											input.form-control(type="text", placeholder="Titre du cadeau", name="titre", ng-model="cadeau.titre")
+								div.col-md-4(ng-hide="cadeau.done")
+									div.form-group
+										form(name="cadeauForm",ng-submit="submitCadeau()")
+											input.form-control(type="text", placeholder="URL vers le cadeau", name="lien", ng-model="cadeau.lien")
+								div.col-md-4(ng-hide="cadeau.done")
+									button.btn.btn-sm.btn-primary(ng-click="validerCadeau(cadeau, userName)") Valider
+									button.btn.btn-sm.btn-default(ng-click="cancelCadeau(cadeau)") annuler
+									button.btn.btn-sm.btn-default.glyphicon.glyphicon-trash(ng-click="deleteCadeau(cadeau)", ng-hide="cadeau.newc")
+					
+					div.row(ng-show="prenomTermine")
+						div.col-md-4
+								button.btn.btn-sm.btn-primary(ng-click="addCadeau(userName)") Ajouter Cadeau
+					div
+						span.label.label-info {{nombrecadeau()}} cadeaux pour {{prenomTermine}}
+							

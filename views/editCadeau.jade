@@ -1,0 +1,31 @@
+extends layout
+	
+block content
+
+	div(ng-controller="cadeauxCtrl", ng-init="init(#{JSON.stringify(cadeau)})")
+		div
+			h1= subtitle
+			span(class="label label-{{label}}") {{cadeau.statut}}
+		div
+			form#formAddUser(name="addCadeau",method="post",action="/addCadeau")
+				input#inputUserName(type="text", placeholder="Titre", name="titre", value="{{cadeau.titre}}")
+				input#inputUserName(type="text", placeholder="Prenom", name="prenom", value="{{cadeau.prenom}}")
+				input#inputUserName(type="text", placeholder="Lien", name="lien", value="{{cadeau.lien}}")
+				button#btnSubmit(type="submit") Enregistrer
+		
+			
+		div(ng-show="{{cadeau.image}}", class="ng-hide")
+			form#formAddUser(name="recharger",method="post",action="/cadeau/recharger")
+				input#inputUserName(type="hidden", placeholder="id", name="id", value="{{cadeau._id}}")
+				input#inputUserName(type="hidden", placeholder="lien", name="lien", value="{{cadeau.lien}}")
+				span: img(src='/webshot/{{cadeau.image}}.png', style='width: 200px;')
+				div: button#btnSubmit(type="submit") Recharger
+		div(ng-show="{{cadeau.image}}")
+				span: img(src='/webshot/{{cadeau.image}}.png', style='width: 200px;')
+		
+		
+		div		
+			div(ng-show="estAReserver(cadeau)"): a(href='/cadeau/{{cadeau._id}}/reserver') Réserver
+			div(ng-show="estAAnnuler(cadeau)"): a(href='/cadeau/{{cadeau._id}}/annuler') Annuler
+			div(ng-show="estAAcheter(cadeau)"): a(href='/cadeau/{{cadeau._id}}/acheter') Acheter
+		

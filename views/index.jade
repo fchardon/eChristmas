@@ -1,0 +1,31 @@
+extends layout
+
+block content
+
+  
+	div.index(ng-controller="indexCtrl")
+		div.container-fluid.center-x(ng-hide="usrExist()")
+			div.row
+				div.col-md-5
+					h3.titre: span.glyphicon.glyphicon-gift #{title}
+				div.col-md-3.inputname
+					div.input-group
+						span.input-group-addon.glyphicon.glyphicon-user
+						input.form-control(type="text", ng-model='userName', placeholder="Entrer votre nom")
+			div.row
+				div.col-md-offset-5.col-md-3.inputname
+					button.btn.btn-success(ng-click="save()") Connexion
+		
+		div(ng-show="usrExist()")
+			h1: span Bienvenue {{usr}} sur #{title}
+			span: a(href="/cadeaux") Acces à la liste de cadeau
+	div.footer.container-fluid.center-x
+		//div.row
+			//div.col-md-6
+				//div.pull-right
+					//div.center-x
+						//ul
+							//li
+								//span.glyphicon.glyphicon-envelope.menu
+								//span.menu contact
+		

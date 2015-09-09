@@ -1,0 +1,31 @@
+extends layoutConnected
+
+block subContent
+
+	div.container(ng-controller="cadeauxCtrl")
+		div.row
+			div.col-md-12
+				div(ng-init="cadeaux= #{JSON.stringify(cadeaux)}")
+					div.input-group.filtre
+						span.input-group-addon.glyphicon.glyphicon-search
+						input(type="text", ng-model='name', name="Filtre", placeholder="Filtre", class="form-control")
+					div
+						table(class="table table-bordered table-striped")
+							thead
+								tr
+									th Titre
+									th Prenom
+									th Image
+							tbody
+								tr(ng-controller="tableCadeauCtrl" ng-repeat="cadeau in cadeaux | filter:name", ng-init="init(cadeau)")
+									td(class="{{label}}")
+										|  <div class="titreCadeau"><a href="/cadeau/{{cadeau._id}}">  {{cadeau.titre}} </a>
+										|  <span class="statut label label-{{label}}"> {{cadeau.statut}} </span> </div>
+									td(class="{{label}}") {{cadeau.prenom}}
+									td(class="{{label}} non-mobile"): a(href='{{cadeau.lien}}', target='_blank'): img(ng-src="{{ loadImage(cadeau) }}", class="{{webshotClass}}") 
+									td(class="{{label}} mobile"): a(href='{{cadeau.lien}}', target='_blank') lien
+		div
+			p
+				//a(href="newCadeau") Ajouter Cadeau
+				a(href="/list/{{userName}}") Gérer ma liste
+			

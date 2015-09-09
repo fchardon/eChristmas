@@ -1,0 +1,284 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;	
+}
+
+.glyphicon span {
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;	
+	padding: 0 2px;
+}
+
+div.index {
+	margin: 0px 10px;
+	padding: 50px 0px 0px 0px;
+}
+
+.navbar-header {
+	height: 50px;
+}
+
+
+.webshot {
+    /* rules for mobile vertical (< 480) */
+	width:50px;
+}
+
+.in-action {
+    /* rules for mobile vertical (< 480) */
+	width:128px;
+}
+
+.loader {
+    /* rules for mobile vertical (< 480) */
+	margin:48px 86px;
+	width:128px;
+}
+
+.webshot-grand {
+	width: 300px;
+}
+
+.filtre {
+	display:none;
+}
+
+.container.navbar-fixed-bottom {
+	padding-bottom:5px;
+}
+
+.non-mobile {
+	display:none;
+}
+
+.mobile {
+	display:table-cell;
+}
+
+/* .index { */
+	
+/* } */
+
+div.inputname {
+	margin-top:20px;
+}
+
+
+a {
+  color: #00B7FF;
+}
+
+span.deconnecter,
+span.user {
+	padding: 0 2px;
+}
+
+span.deconnecter {
+	cursor: pointer;
+}
+
+
+
+span.nav-bar-user {
+	margin-top:17px;	
+}
+
+ul.nav.navbar-nav li a {
+	padding: 17px;
+}
+
+div.viewInput {
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 19px;
+	margin-left: 10px;
+
+}
+
+li.personne:hover,
+div.inputcadeau:hover {
+	background-color: #F5F5F5;
+	cursor: pointer;
+}
+
+span.glyphicon.glyphicon-link{
+	cursor: pointer;
+}
+
+div.iconeCheck {
+	margin-top: 10px;
+}
+
+.listeCadeaux li {
+	list-style: outside none none;
+}
+
+ ul.listeCadeaux {
+	padding: 0px;
+}
+
+/* .btn { */
+/* 	margin-left:5px; */
+/* } */
+
+.center-x {
+	text-align:center;
+}
+
+.action {
+	margin:10px;
+}
+
+div.statut {
+	margin-top: 0px;
+	display: block;
+}
+
+span.statut.label.label-annuler {
+	display: none;
+}
+
+.container {
+	margin-top: 55px;
+}
+
+div.entete {
+	display:none;
+}
+
+.navbar-header h3.titre {
+		margin-top: 0px;
+	}
+
+/* Footer */
+
+
+span.menu {
+	display: block;
+    text-align: center;
+}
+
+.footer li {
+	list-style: none; 
+}
+
+.personne {
+	width:140px;
+}
+
+div.listPersonnes {
+	border-right: solid 1px #555;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	body {
+	}
+	
+	.container {
+		margin-top: 55px;
+	}
+	
+	
+	.webshot {
+		width:100px;
+	}
+	
+	div.statut {
+		margin-top: 33px;
+	}
+	
+	div.entete {
+		display:block;
+	}
+	
+	.filtre {
+		display:block;
+		margin-bottom: 5px;
+	}
+	
+	
+	
+	.non-mobile {
+		display:table-cell;
+	}
+	
+	.mobile {
+		display:none;
+	}
+	
+	.center-x {
+		text-align:unset;
+	}
+	
+	
+	
+}
+
+/* Hack Chrome / Safari */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.glyphicon {
+		top: 0px !important;
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	body {
+/* 	  padding: 50px; */
+	}
+	
+	.container {
+		margin-top: 15px;
+	}
+	
+	.webshot {
+		width:300px;
+	}
+	
+	div.index {
+		margin: 0px 0px;
+		padding-top:120px;
+		background-image:  url("/image/gift_640.jpg");
+	  	background-position: right center;
+    	background-repeat: no-repeat;
+    	background-color: #CBC9cA;
+	  	height: 400px;
+	}
+	
+	h3.titre {
+		float: right;
+	}
+	
+	div.background {
+	  	height: 200px;
+	  	background: #FFFFFF;
+	  	background-image:  url("/image/fond2.jpg");
+	  	background-image:  -moz-linear-gradient(center top , rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.81) 82%, rgba(255, 255, 255, 1) 100%), url("/image/fond2.jpg"); /* FF3.6+ */
+	  	background-image:  -moz-linear-gradient(top,  rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.81) 82%, rgba(255, 255, 255, 1) 100%), url("/image/fond2.jpg"); /*FF3.6+ */
+		background-image:  -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))), url("/image/fond2.jpg"); /* Chrome,Safari4+ */
+		background-image:  -webkit-linear-gradient(top,  rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.81) 82%, rgba(255, 255, 255, 1) 100%), url("/image/fond2.jpg"); /*Chrome10+,Safari5.1+ */
+		background-image:  -o-linear-gradient(top,  rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.81) 82%, rgba(255, 255, 255, 1) 100%), url("/image/fond2.jpg"); /* Opera 11.10+ */
+		background-image:  -ms-linear-gradient(top,  rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.81) 82%, rgba(255, 255, 255, 1) 100%), url("/image/fond2.jpg"); /*IE10+ */
+		background-image:  linear-gradient(to bottom,  rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.81) 82%, rgba(255, 255, 255, 1) 100%), url("/image/fond2.jpg"); /* W3C */
+		/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); IE6-9 */
+
+	}
+	
+	
+	div.container {
+		padding: 50px 0px 0px 0px;
+	}
+	
+	div.titreCadeau{
+		width: 500px;
+	}
+	
+	/* Footer */ 
+	div.footer {
+	 border-top: solid 2px;
+	}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+  h1= title
+  div(class='pull-right') Le {{day | moment:'L'}}
+  
+    
+  div(ng-controller='RollCtrl')
+    Lancer le dé
+    button(ng-click='lancer();') Lancer
+    div Resultat: {{value}}

@@ -1,0 +1,19 @@
+{
+  "name": "eChristams",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.6",
+    "jade": "*",
+    "poll": "*",
+    "angular": "*",
+    "moment" : "*",
+    "angular-cookies": "*",
+    "mongodb": "*",
+    "monk": "*",
+    "webshot": "*"
+  }
+}

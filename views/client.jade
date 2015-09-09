@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+	h1= 'Liste des Clients'
+	
+	div(ng-controller='ClientsCtrl')
+		button(ng-click='rechercher();') Rechercher Clients
+		{{msg}}
+		div
+			table(class="table table-bordered table-striped")
+				thead
+					tr
+						th Name
+						th Email
+				tbody
+					tr(ng-repeat="client in clients | filter:name")
+						td {{ client.username }}
+						td {{ client.email }}
+		div
+			button(ng-click='newClient();') Ajouter Nouveau Client  		
+			a(href="newClient") Nouveau Client

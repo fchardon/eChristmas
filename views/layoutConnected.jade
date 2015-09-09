@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	body(ng-controller='connectedCtrl')
+		div.nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+			div.container-fluid
+				div.navbar-header
+					h3.titre: span.navbar-brand.glyphicon.glyphicon-gift #{title}
+				div.collapse.navbar-collapse
+					ul.nav.navbar-nav
+						li(ng-Class="getActiveClass('/cadeaux/{{userName}}')")
+							a(href='/cadeaux/{{userName}}'): span.glyphicon.glyphicon-list-alt: span= 'Liste Cadeaux'
+						//li(ng-Class="getActiveClass('/newCadeau')")
+						//	a(href='/newCadeau'): span.glyphicon.glyphicon-plus: span= 'Cadeau'
+						li(ng-Class="getActiveClass('/list/{{userName}}')")
+							a(href='/list/{{userName}}'): span.glyphicon.glyphicon-pencil: span= 'Gérer Liste'
+					
+					ul.nav.navbar-nav.navbar-right
+						//li.dropdown
+						//	div( data-toggle="dropdown")
+						//		a.dropdown-toggle( href="#", role="button", aria-expanded="false") Dropdown
+						//		ul.dropdown-menu(role="menu")
+						//			li
+						//				a(href="#") Action
+						li
+							span.glyphicon.glyphicon-user.nav-bar-user: span.user {{userName}}
+						//li
+						//	span.glyphicon.glyphicon-remove-circle.nav-bar-user: span.deconnecter(ng-click="deconnecter()") Deconnecter
+						//	a(href='/cadeaux'): <span class='user'> Panier</span> <span class="label label-warning">{elements}</span>
+    
+		block subContent

@@ -1,0 +1,25 @@
+extends layoutConnected
+	
+block subContent
+	div(ng-controller="viewCadeauCtrl", ng-init="init(#{JSON.stringify(cadeau)})")
+		div(class="container")
+			div.row
+				div(class="col-md-4")
+						span: img(ng-src="{{imgSrc}}", class="{{webshotClass}}")
+						span(ng-hide="{{cadeau.image != null}}"): a(href='/cadeau/{{cadeau._id}}/recharger', class="btn btn-success") Recharger
+						
+				div.col-md-5
+							h3: Cadeau {{cadeau.titre}}
+							a(href="{{cadeau.lien}}") {{cadeau.lien}}
+							div Pour {{cadeau.prenom}}
+				div.col-md-3.statut
+					span(class="label label-{{label}}") {{statutMessage}}
+		
+		div(class="container navbar-fixed-bottom", ng-init="estRole(#{JSON.stringify(role)})")
+			div {{role}}
+			div.row
+				div.col-md-12
+					span(ng-show="estAAnnuler(cadeau)"): a(href='/cadeau/annuler/{{cadeau._id}}/{{userName}}', class="btn btn-lg btn-danger") Annuler
+					span(ng-show="estAReserver(cadeau)"): a(href='/cadeau/reserver/{{cadeau._id}}/{{userName}}', class="btn btn-lg btn-warning") Réserver
+					span(ng-show="estRole"): a(href='/cadeau/{{cadeau._id}}/delete/ok', class="btn btn-lg btn-warning") Supprimer
+					

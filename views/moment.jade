@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+  h1= title
+  div(class='pull-right') Le {{day | moment:'L'}}
+  
+  
+  div(ng-controller='testCtrl')
+    div Mon age {{age}} - {{loc}}
+    
+  div(ng-controller='UserCtrl')
+    input(type="text", ng-model='user')
+    div Utilisateur {{user}} - {{name}}
+    button(ng-click='click();') Save
+    button(ng-click='click2();') Read
+    button(ng-click='de();') De
+    div {{value}}
