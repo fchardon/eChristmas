@@ -5,7 +5,9 @@
 var express = require('express'),
 routes = require('./routes'),
 cadeau = require('./routes/cadeau'),
+accounts = require('./routes/accounts'),
 liste = require('./routes/liste'),
+
 http = require('http'),
 path = require('path'),
 webshot = require('webshot'),
@@ -55,14 +57,34 @@ if ('development' == app.get('env')) {
 
 
 // Route
+
+// Home
 app.get('/', routes.index);
+
+app.get('/create', routes.create);
+
+
+// Account
+app.get('/accounts', accounts.index);
+app.post('/accounts/save', accounts.save);
+
+// User
 app.post('/save', routes.save);
+app.post('/user/delete', routes.deleteUser);
+app.get('/users/:user', routes.users);
+app.post('/users/connexion', routes.connectUser);
+
+
 app.get('/cadeaux', cadeau.index);
 app.get('/cadeaux/:user', cadeau.search);
+app.get('/cadeaux/:account/:user', cadeau.search);
 app.get('/newCadeau', cadeau.new);
 app.post('/addCadeau', cadeau.addCadeau);
 app.post('/updateCadeau', cadeau.updateCadeau);
 app.get('/addList', liste.addList);
+
+app.get('/lists/:account/:user', liste.liste);
+app.get('/accounts/:account', liste.index);
 app.get('/list/:user', liste.liste);
 app.get('/chargeCadeau/:prenom', liste.charger);
 app.post('/addPersonne', liste.addPersonne);

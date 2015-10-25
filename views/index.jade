@@ -2,30 +2,50 @@ extends layout
 
 block content
 
-  
-	div.index(ng-controller="indexCtrl")
-		div.container-fluid.center-x(ng-hide="usrExist()")
-			div.row
-				div.col-md-5
-					h3.titre: span.glyphicon.glyphicon-gift #{title}
-				div.col-md-3.inputname
-					div.input-group
-						span.input-group-addon.glyphicon.glyphicon-user
-						input.form-control(type="text", ng-model='userName', placeholder="Entrer votre nom")
-			div.row
-				div.col-md-offset-5.col-md-3.inputname
-					button.btn.btn-success(ng-click="save()") Connexion
+	div(ng-controller="indexCtrl")
+		div.index
+			div.container-fluid.center-x(ng-hide="usrExist()")
+				div.row
+					div.col-md-3
+						h3.titre: span #{title}
+					//div.col-md-3.inputname
+						//div.input-group
+							//input.form-control(type="text", ng-model='userName', placeholder="Entrer votre nom")
+					div.col-md-5
+					div.col-md-1.inputname
+							a.btn.btn-success(href="/create") Inscription
+					div.col-md-1.inputname
+							button.btn.btn-success(ng-click="toggled()") Connexion
 		
-		div(ng-show="usrExist()")
-			h1: span Bienvenue {{usr}} sur #{title}
-			span: a(href="/cadeaux") Acces à la liste de cadeau
-	div.footer.container-fluid.center-x
-		//div.row
-			//div.col-md-6
-				//div.pull-right
-					//div.center-x
-						//ul
-							//li
-								//span.glyphicon.glyphicon-envelope.menu
-								//span.menu contact
-		
+			//div(ng-show="usrExist()")
+				//h1: span Bienvenue {{usr}} sur #{title}
+				//span: a(href="/cadeaux") Acces à la liste de cadeau
+		div.footer.container-fluid.center-x
+		div.center(ng-hide="usrExist()")
+			div.row
+					div.col-md-2
+					div.col-md-5
+						h1 Organiser votre liste de Noël
+					div.col-md-3(ng-show="connexion")
+						input.form-control(type="text", ng-model='userName', placeholder="Nom")
+					div.col-md-3(ng-show="connexion")
+						input.form-control(type="password", ng-model='password', placeholder="Mot de passe")
+					
+			div.row
+					div.col-md-2
+					div.col-md-5
+						h3 La première liste de gestion de cadeaux collaborative.
+					div.col-md-3(ng-show="connexion")
+						button.btn.btn-success(ng-click="connexion()") Connexion
+						
+		div.footer.container-fluid.center-x
+			
+			//div.row
+				//div.col-md-6
+					//div.pull-right
+						//div.center-x
+							//ul
+								//li
+									//span.glyphicon.glyphicon-envelope.menu
+									//span.menu contact
+			

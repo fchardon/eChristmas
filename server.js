@@ -3,6 +3,7 @@
 var express = require('express'),
 routes = require('./routes'),
 cadeau = require('./routes/cadeau'),
+accounts = requite('./routes/accounts'),
 
 liste = require('./routes/liste'),
 http = require('http'),
@@ -47,7 +48,7 @@ var SampleApp = function() {
 
      // default to a 'localhost' configuration:
      //var connection_string = 'mongodb://127.0.0.1:27017/echristmas';
-     //var connection_string = 'admin:AXs6b7EDccpu@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/echristmas';
+     //var connection_string = 'admin:@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/echristmas';
      //mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/
      // if OPENSHIFT env variables are present, use the available connection info:
      /*if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
@@ -63,12 +64,12 @@ var SampleApp = function() {
      var mongoHost = process.env.OPENSHIFT_MONGODB_DB_HOST || 'localhost';
      var mongoPort = process.env.OPENSHIFT_MONGODB_DB_PORT || 27017;
      var mongoUser = 'admin'; //mongodb username
-     var mongoPass = 'AXs6b7EDccpu'; //mongodb password
+     var mongoPass = ''; //mongodb password
      var mongoDb   = 'echristmas'; //mongodb database name
      
      //connection strings
-     var mongoString = 'mongodb://' + mongoUser + ':' + mongoPass + '@' + mongoHost + ':' + mongoPort + '/' + mongoDb;
-     //var mongoString = 'mongodb://127.0.0.1:27017/echristmas';
+     //var mongoString = 'mongodb://' + mongoUser + ':' + mongoPass + '@' + mongoHost + ':' + mongoPort + '/' + mongoDb;
+     var mongoString = 'mongodb://127.0.0.1:27017/echristmas';
      
      //connect to mongo
      var mongoClient = monk(mongoString, function(err){
@@ -211,6 +212,7 @@ var SampleApp = function() {
       self.app.get('/cadeau/:cadeauId/reloadImage', cadeau.reloadImage);
       */
       self.app.get('/', routes.index);
+      self.app.get('/accounts', accounts.index);
       self.app.post('/save', routes.save);
       self.app.get('/cadeaux', cadeau.index);
       self.app.get('/cadeaux/:user', cadeau.search);
@@ -218,6 +220,7 @@ var SampleApp = function() {
       self.app.post('/addCadeau', cadeau.addCadeau);
       self.app.post('/updateCadeau', cadeau.updateCadeau);
       self.app.get('/addList', liste.addList);
+      self.app.get('/lists/:account/:user', liste.liste);
       self.app.get('/list/:user', liste.liste);
       self.app.get('/chargeCadeau/:prenom', liste.charger);
       self.app.post('/addPersonne', liste.addPersonne);

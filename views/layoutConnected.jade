@@ -1,31 +1,28 @@
 extends layout
 
 block content
-	body(ng-controller='connectedCtrl')
+	body(ng-controller='connectedCtrl', ng-init="load(user= #{JSON.stringify(user)})")
 		div.nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
 			div.container-fluid
 				div.navbar-header
-					h3.titre: span.navbar-brand.glyphicon.glyphicon-gift #{title}
+					h3.titre: span.navbar-brand.glyphicon.glyphicon-gift
 				div.collapse.navbar-collapse
 					ul.nav.navbar-nav
-						li(ng-Class="getActiveClass('/cadeaux/{{userName}}')")
-							a(href='/cadeaux/{{userName}}'): span.glyphicon.glyphicon-list-alt: span= 'Liste Cadeaux'
-						//li(ng-Class="getActiveClass('/newCadeau')")
-						//	a(href='/newCadeau'): span.glyphicon.glyphicon-plus: span= 'Cadeau'
-						li(ng-Class="getActiveClass('/list/{{userName}}')")
-							a(href='/list/{{userName}}'): span.glyphicon.glyphicon-pencil: span= 'Gérer Liste'
-					
+						li(ng-Class="getActiveClass('/cadeaux/chardon/{{userName}}')")
+							a(href='/cadeaux/chardon/{{userName}}'): span.glyphicon.glyphicon-list-alt: span= 'Liste Cadeaux'
+						li(ng-Class="getActiveClass('/lists/chardon/{{userName}}')")
+							a(href='/lists/chardon/{{userName}}'): span.glyphicon.glyphicon-pencil: span= 'Gérer Liste'
+						li(ng-Class="getActiveClass('/accounts')", ng-show="{{user.isAdmin}}")
+							a(href='/accounts'): span.glyphicon.glyphicon-pencil: span= 'Accounts'
+						li(ng-Class="getActiveClass('/accounts/{{user.account}}')", ng-show="{{user.isAdmin}}")
+							a(href='/accounts/{{user.account}}'): span.glyphicon.glyphicon-pencil: span= 'My Account'
+				
 					ul.nav.navbar-nav.navbar-right
-						//li.dropdown
-						//	div( data-toggle="dropdown")
-						//		a.dropdown-toggle( href="#", role="button", aria-expanded="false") Dropdown
-						//		ul.dropdown-menu(role="menu")
-						//			li
-						//				a(href="#") Action
-						li
-							span.glyphicon.glyphicon-user.nav-bar-user: span.user {{userName}}
 						//li
-						//	span.glyphicon.glyphicon-remove-circle.nav-bar-user: span.deconnecter(ng-click="deconnecter()") Deconnecter
+						//	span.glyphicon.glyphicon-user.nav-bar-user: span.user {{userName}}
+						
+						li
+							span.glyphicon.glyphicon-remove-circle.nav-bar-user: span.deconnecter(ng-click="deconnecter()") Deconnecter
 						//	a(href='/cadeaux'): <span class='user'> Panier</span> <span class="label label-warning">{elements}</span>
     
 		block subContent

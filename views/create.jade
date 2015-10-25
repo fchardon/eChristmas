@@ -1,0 +1,51 @@
+extends layout
+
+block content
+
+  
+	div.index
+		div.container-fluid.center-x
+			div.row
+				div.col-md-5
+					h3.titre: span #{title}
+				div.col-md-3
+				div.col-md-4.inputname
+	
+	div.footer.container-fluid.center-x
+	div.center(ng-controller="createAccountCtrl")
+		div.row
+				div.col-md-2
+				div.col-md-2
+					h5 Nom de votre liste
+				div.col-md-3
+					input.form-control(type="text", ng-model='accountName', placeholder="Entrer le nom de votre liste")
+		div.row
+				div.col-md-2
+				div.col-md-2
+					h5 Nom de votre compte
+				div.col-md-5
+					input.form-control(type="text", ng-model='userName', placeholder="Entrer votre nom")
+		div.row
+				div.col-md-2
+				div.col-md-2
+					h5 Mot de passe
+				div.col-md-3
+					input.form-control(type="text", ng-model='accountPassword', placeholder="Entrer le mot de passe")
+		div.row
+				div.col-md-2
+				div.col-md-2
+				div.col-md-3
+					button.btn.btn-success(ng-click="save()") Valider
+		
+					
+	div.footer.container-fluid.center-x
+		
+		//div.row
+			//div.col-md-6
+				//div.pull-right
+					//div.center-x
+						//ul
+							//li
+								//span.glyphicon.glyphicon-envelope.menu
+								//span.menu contact
+		

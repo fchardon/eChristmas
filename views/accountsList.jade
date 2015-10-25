@@ -1,0 +1,26 @@
+extends layoutConnected
+
+block subContent
+
+	div.container(ng-controller="userListCtrl")
+		div(ng-init="personnes= #{JSON.stringify(personnes)}; account= #{JSON.stringify(account)}")
+			div.row
+				div.col-md-3
+					div
+						h4 Liste des utilisateurs ({{personnes.length}})
+			div.row(ng-repeat="personne in personnes")
+				div.col-md-2
+					a(href="/lists/{{account}}/{{personne.user}}") {{personne.user}}
+				div.col-md-4
+					button.btn.btn-success(ng-click="deletePersonne(personne)") Supprimer
+						
+			div.row
+				div.col-md-3
+					div
+						h4 Ajouter un nouvel utilisateur
+			div.row
+				div.col-md-2
+					input.form-control(type="text", ng-model='newName', placeholder="Entrer votre nom")
+				div.col-md-3
+					button.btn.btn-success(ng-click="save()") Ajouter
+					

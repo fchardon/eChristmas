@@ -1,0 +1,10 @@
+extends layoutConnected
+
+block subContent
+
+	div.container
+		div(ng-init="accounts= #{JSON.stringify(accounts)}")
+			div.row
+				div.col-md-12
+					div(ng-repeat="account in accounts")
+						a(href="accounts/{{account.name}}") {{account.name}}	

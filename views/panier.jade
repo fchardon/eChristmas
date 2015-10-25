@@ -2,7 +2,7 @@ extends layoutConnected
 	
 block subContent
 
-	div.container(ng-controller="listCtrl", ng-init="load(user= #{JSON.stringify(user)})")
+	div.container(ng-controller="listCtrl")
 		div.row
 			div.col-md-2.listPersonnes
 				div(ng-controller="personneCtrl", ng-init="init(personnes= #{JSON.stringify(personnes)})")
@@ -14,7 +14,8 @@ block subContent
 							div
 								ul.listeCadeaux
 									li.personne(ng-repeat="personne in personnes")
-										div.viewInput(ng-show='personne.done',ng-click="afficherCadeau(personne.prenom)") {{personne.prenom}}
+										div.viewInput(ng-show='personne.done',ng-click="afficherCadeau(personne.prenom)")
+											{{personne.prenom}}
 										div(ng-hide='personne.done')
 											div.form-group.personne
 												form(name="personneForm",ng-submit="submitPersonne()")
@@ -26,14 +27,15 @@ block subContent
 								button.btn.btn-sm.btn-primary(ng-click="addPersonne()") Ajouter Personne
 					
 			div.col-md-10
-				div(ng-hide="displayCadeaux")
+				//div(ng-init="init(cadeaux= #{JSON.stringify(cadeaux)})")
+				div(ng-hide="displayCadeaux")		
 					div.col-md-10
 							//div.viewInput(ng-click="editPrenom()")
 							div
 								h3 Liste des cadeaux
 							div
 								span.label.label-success Clique sur un prénom pour voir la liste des cadeaux
-				div(ng-show="displayCadeaux")
+				div(ng-show="displayCadeaux")		
 					div.row
 						//div.col-md-2(ng-hide="afficherPrenom")
 						//	div.form-group

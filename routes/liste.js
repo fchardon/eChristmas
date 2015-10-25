@@ -4,15 +4,48 @@ exports.addList = function(req, res) {
 
 
 exports.liste = function(req, res) {
-	var user = req.param('user');
+	var userName = req.param('user');
+	var account = req.param('account');
 	var db = req.db;
 	var collection = db.get('personnes'); 
 	
-	collection.find({"owner":user}, {}, function(e, docs) {
-		res.render('addList', {
+	// Load User
+	getUser(userName, req.db, function(user) {
+		//defer.resolve(doc);
+		console.log("liste:"+userName)
+		// Then load personne
+		collection.find({"owner":userName}, {}, function(e, docs) {
+			res.render('addList', {
+				"personnes" : docs,
+				"account" : account,
+				"user" : user
+			});
+		});
+	});
+	
+	
+	
+};
+
+/**
+ * Allow to add a new user to a list.
+ * TOTO: Move to account.js
+ */
+exports.index = function(req, res) {
+	var account = req.param('account');
+	var db = req.db;
+	var collection = db.get('users'); 
+	
+	
+	
+	collection.find({"account":account}, {}, function(e, docs) {
+		res.render('accountsList', {
+			"account" : account,
 			"personnes" : docs
 		});
 	});
+	
+	
 };
 
 exports.charger = function(req, res) {

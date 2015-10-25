@@ -1,0 +1,31 @@
+extends layoutConnected
+
+block subContent
+
+	div.container
+		div(ng-init="accounts= #{JSON.stringify(accounts)}")
+			div.row
+				div.col-md-12
+					div(ng-repeat="account in accounts")
+						a(href="accounts/{{account.name}}") {{account.name}} {{test}}
+	div
+		div(ng-controller="dropdownCtrl")
+			span(on-toggle="toggled(open)")
+			a(id="simple-dropdown", uib-dropdown-toggle="") Click me for a dropdown, yo! {{test}}
+			ul.uib-dropdown-menu
+				li(ng-repeat="choice in items}}")
+					a {{choice}}
+		div
+		|	<div ng-repeat="choice in items">
+		|		{{choice}}
+		|	</div>
+		|	<a href id="simple-dropdown" uib-dropdown-toggle> Click me for a dropdown, yo! {{test}}</a>
+		|	<span on-toggle="toggled(open)">
+		|	<a href id="simple-dropdown" uib-dropdown-toggle> Click me for a dropdown, yo! {{test}}</a>
+		| 	<ul class="uib-dropdown-menu">
+		| 		<li ng-repeat="choice in items}}">
+		| 			<a href>{{choice}}</a>
+		| 		</li>
+		| 	</ul>
+		| </span>
+	
