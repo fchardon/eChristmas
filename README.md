@@ -1,8 +1,8 @@
 
 
-# eChristams
+# eChristmas
 
-Application de gestion de list de cadeaux de Noel.
+Gift application management for christmas
 
 
 ## Usage
@@ -12,7 +12,7 @@ config.js: Mettre à jour les données pour la connexion à la base:
     var mongoDb   = ''; //mongodb database name
 
 
-## Lancer Application
+## Launch Application
 Lancer application: supervisor -e 'html|js' node app.js
 Mettre a jour libraire:
 1/ajouter librairie ds package.json
